@@ -1,0 +1,29 @@
+{
+  "name": "restaurantapi",
+  "version": "1.0.0",
+  "description": "Zappos submission for Summer College Internship: Data Science Software Engineering ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinaycalastry/ZapposRestAPI.git"
+  },
+  "keywords": [
+    "Zappos",
+    "Rest",
+    "API"
+  ],
+  "author": "Vinay Calastry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinaycalastry/ZapposRestAPI/issues"
+  },
+  "homepage": "https://github.com/vinaycalastry/ZapposRestAPI#readme",
+  "dependencies": {
+    "compression": "^1.7.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2"
+  }
+}

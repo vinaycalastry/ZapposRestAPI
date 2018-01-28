@@ -1,0 +1,9 @@
+# Passwords
+.env
+
+# node related
+node_modules
+
+# extra files
+.vscode
+package-lock.json

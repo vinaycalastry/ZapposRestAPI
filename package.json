@@ -4,7 +4,8 @@
   "description": "Zappos submission for Summer College Internship: Data Science Software Engineering ",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/vinaycalastry/ZapposRestAPI#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "compression": "^1.7.1",
     "dotenv": "^4.0.0",
     "express": "^4.16.2"

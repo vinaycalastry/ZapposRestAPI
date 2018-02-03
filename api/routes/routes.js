@@ -10,15 +10,13 @@ module.exports = function(app){
     app.delete('/restaurant/:ID', apiController.deleteRestaurant);
 
     /* Routes for Menus */
-    app.route('/menu/:ID')
-    .get()
-    .post()
-    .delete();
+    app.get('/menu/:ID', apiController.getMenu);
+    app.post('/menu',  apiController.addMenu);
+    app.delete('/menu/:ID', apiController.deleteMenu);
 
      /* Routes for MenuItems */
-    app.route('/menuitem/:ID')
-    .get()
-    .post()
-    .delete();
+     app.get('/menuItem/:ID', apiController.getMenuItem);
+     app.post('/menuItem',  apiController.addMenuItem);
+     app.delete('/menuItem/:ID', apiController.deleteMenuItem);
 
 }

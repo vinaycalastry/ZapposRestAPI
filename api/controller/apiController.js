@@ -109,19 +109,24 @@ module.exports.deleteRestaurant = function(req, res){
 		connection.query('DELETE FROM `restaurants` WHERE `RID`=?', [rid], function (error, results, fields) {
 		
 		connection.release();
-
+		
 		  // Handle error after the release.
 		if (error) {
 			res.status(500).json({Error: error});
 			throw error;
 		  }
-		redis.del(key, function(er, cRes){
-			if(er) {
-				res.status(500).json({Error: er});
-				throw er;
-			}
-			res.status(200).json({Message: "Restaurant with RID:"+rid+" deleted from DB"});
-		});
+		else if(results.changedRows === 0){
+			res.status(200).json({Message: "Restaurant with RID:"+rid+" not found in DB"});
+		}
+		else{
+			redis.del(key, function(er, cRes){
+				if(er) {
+					res.status(500).json({Error: er});
+					throw er;
+				}
+				res.status(200).json({Message: "Restaurant with RID:"+rid+" deleted from DB"});
+			});
+		}	
 		
 	});
 	
@@ -233,13 +238,18 @@ module.exports.deleteMenu = function(req, res){
 			res.status(500).json({Error: error});
 			throw error;
 		  }
-		redis.del(key, function(er, cRes){
-			if(er) {
-				res.status(500).json({Error: er});
-				throw er;
-			}
-			res.status(200).json({Message: "Menu with ID:"+mid+" deleted from DB"});
-		});
+		else if(results.changedRows === 0){
+			res.status(200).json({Message: "Restaurant with MenuID:"+mid+" not found in DB"});
+		}
+		else{
+			redis.del(key, function(er, cRes){
+				if(er) {
+					res.status(500).json({Error: er});
+					throw er;
+				}
+				res.status(200).json({Message: "Menu with ID:"+mid+" deleted from DB"});
+			});
+		}	
 		
 	});
 	
@@ -351,14 +361,19 @@ module.exports.deleteMenuItem = function(req, res){
 		if (error) {
 			res.status(500).json({Error: error});
 			throw error;
-		  }
-		redis.del(key, function(er, cRes){
-			if(er) {
-				res.status(500).json({Error: er});
-				throw er;
-			}
-			res.status(200).json({Message: "MenuItem with ID:"+miid+" deleted from DB"});
-		});
+		}
+		else if(results.changedRows === 0){
+			res.status(200).json({Message: "Restaurant with ID:"+miid+" not found in DB"});
+		}
+		else{
+			redis.del(key, function(er, cRes){
+				if(er) {
+					res.status(500).json({Error: er});
+					throw er;
+				}
+				res.status(200).json({Message: "MenuItem with ID:"+miid+" deleted from DB"});
+			});
+		}
 		
 	});
 	

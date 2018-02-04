@@ -26,7 +26,7 @@ __PS: Used Redis on Ubuntu whereas the rest were installed on Windows as Redis d
 **BaseURL**: http://localhost:5000 
 
 Endpoint      |  HTTP Verb  |  Body Type         |  Purpose                                                                  |  Example                             |  JSON Example
------------------|-------------|--------------------|---------------------------------------------------------------------------|--------------------------------------|-----------------------------------------------------------------------------------------------------------
+-----------------|-------------|--------------------|---------------------------------------------------------------------------|--------------------------------------|-------------------------------------------------------------------------------------------------------
 /                |  GET        |                    |  Base URL to check if webservice is up                                    |  http://localhost:5000               |
 /restaurant/:ID  |  GET        |                    |  Get a Restaurant details using its Restaurant ID                         |  http://localhost:5000/restaurant/2  |
 /restaurant/:ID  |  DELETE     |                    |  Delete a Restaurant and its details using its Restaurant  ID             |  http://localhost:5000/restaurant/2  |
@@ -34,8 +34,8 @@ Endpoint      |  HTTP Verb  |  Body Type         |  Purpose                     
 /menu/:ID        |  GET        |                    |  Get menus of a restaurant using its Menu ID                              |  http://localhost:5000/menu/2        |
 /menu/:ID        |  DELETE     |                    |  Delete Menus of a restaurant using its Menu ID                           |  http://localhost:5000/menu/2        |
 /menu            |  POST       |  application/json  |  Add a new menu to a restaurant and generate a Menu ID                    |  http://localhost:5000/menu
-         |  {"MNAME": "Dinner","MDETAILS": "All dishes relating to dinner before 9:00PM are stored here","RID": "1"}
+         |  {"MNAME":"Dinner","MDETAILS":"All dishes relating to dinner before 9:00PM are stored here","RID":"1"}
 /menuItem/:ID    |  GET        |                    |  Get menu items in a menu of a restaurant using its MenuItem ID           |  http://localhost:5000/menuItem/2
    |
 /menuItem/:ID    |  DELETE     |                    |  Delete menu items in a menu of a restaurant using its MenuItem ID        |  http://localhost:5000/menuItem/2    |
-/menuItem        |  POST       |  application/json  |  Add a new menuitem to a menu of a restaurant and generate a MenuItem ID  |  http://localhost:5000/menuItem      |  {"MITEMNAME": "Prime RIB","MITEMDETAILS": "Burger","MITEMPRICE": 4.95,"MID": "1","RID": "1"}
+/menuItem        |  POST       |  application/json  |  Add a new menuitem to a menu of a restaurant and generate a MenuItem ID  |  http://localhost:5000/menuItem      |  {"MITEMNAME":"PrimeRib","MITEMDETAILS":"Burger","MITEMPRICE":4.95,"MID":"1","RID":"1"}

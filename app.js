@@ -27,4 +27,5 @@ app.listen(app.get('port'), function(){
 //Call the routes function
 routes(app);
 
+//To be used by testing framework
 module.exports = app;

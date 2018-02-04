@@ -89,7 +89,7 @@ module.exports.addRestaurant = function(req, res){
 				res.status(500).json({Error: error});
 				throw error;
 			  }
-			res.status(200).json({Message:"Restaurant with RID: "+results.insertId+" added to Table DB."});
+			res.status(200).json({Message:"Restaurant with RID: "+results.insertId+" added to Table DB.", RID:results.insertId});
 			});
 		
 		});
@@ -212,7 +212,7 @@ module.exports.addMenu = function(req, res){
 				res.status(500).json({Error: error});
 				throw error;
 			  }
-			res.status(200).json({Message:"Menus with ID: "+results.insertId+" of Restaurant with RID: "+req.body.RID+" added to Menus Table in DB."});
+			res.status(200).json({Message:"Menus with ID: "+results.insertId+" of Restaurant with RID: "+req.body.RID+" added to Menus Table in DB.", MID:results.insertId, RID:req.body.RID});
 			});
 		
 		});
@@ -338,7 +338,7 @@ module.exports.addMenuItem = function(req, res){
 				res.status(500).json({Error: error});
 				throw error;
 			  }
-			res.status(200).json({Message:"MenuItem with ID: "+results.insertId+" of Restaurant with RID: "+req.body.RID+" added to Menus Table in DB."});
+			res.status(200).json({Message:"MenuItem with ID: "+results.insertId+" of Restaurant with RID: "+req.body.RID+" added to Menus Table in DB.", MIID:results.insertId, MID:req.body.MID, RID:req.body.RID});
 			});
 		
 		});

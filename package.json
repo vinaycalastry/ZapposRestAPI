@@ -4,7 +4,7 @@
   "description": "Zappos submission for Summer College Internship: Data Science Software Engineering ",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --timeout 10000",
     "start": "node app"
   },
   "repository": {
@@ -25,6 +25,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
     "compression": "^1.7.1",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",

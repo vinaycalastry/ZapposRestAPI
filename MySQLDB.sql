@@ -42,13 +42,3 @@ create table menuitems(MIID int NOT NULL AUTO_INCREMENT,
                        ON UPDATE CASCADE);
                   
                        
-commit;
-
-select * from restaurants;
-select * from menus;
-select * from menuitems;
-
-delete from restaurants;
-
-insert into menus(MNAME, MDETAILS, RID) values('Breakfast', 'All dishes relating to breakfast before 11:00AM are stored here', 1);
-insert into menuitems(MITEMNAME, MITEMDETAILS, MID, RID) values('TEST', 'test2',2,2 );

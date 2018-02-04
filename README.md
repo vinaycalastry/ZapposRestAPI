@@ -17,8 +17,8 @@ __PS: Used Redis on Ubuntu whereas the rest were installed on Windows as Redis d
 3. Run the MySQLDB.sql script file provided for the tables to be created.
 4. Edit the **.env** file provided with correct values for MySQL DB and Redis
 5. Navigate to the restaurantapi folder(where package.json is located) and run **npm install** in console. This step is to install dependencies required for the RestAPI to work.
-6. Run **npm start** inorder to start the webserver.
-7. Run **npm test** to run the unit-test cases.
+6. Run **npm test** to run the unit-test cases.
+7. Run **npm start** inorder to start the webserver.
 
 
 ### Rest API Endpoints

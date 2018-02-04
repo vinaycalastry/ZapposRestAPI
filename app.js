@@ -26,3 +26,5 @@ app.listen(app.get('port'), function(){
 
 //Call the routes function
 routes(app);
+
+module.exports = app;

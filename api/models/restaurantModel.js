@@ -1,7 +1,7 @@
 var mysql      = require('mysql');
 
 var connection = mysql.createPool({
-        connectionLimit : 10,
+        connectionLimit :process.env.CONNLIMIT,
         host     : process.env.HOST,
         port	 : process.env.MYSQLPORT,
         user     : process.env.USER,
@@ -9,13 +9,5 @@ var connection = mysql.createPool({
         database : process.env.DATABASE
       });
 
-/*connection.connect(function(err) {
-        if (err) {
-          console.error('error connecting: ' + err.stack);
-          return;
-        }
-       
-        console.log('connected as id ' + connection.threadId);
-      });
-*/
+
 module.exports = connection; 

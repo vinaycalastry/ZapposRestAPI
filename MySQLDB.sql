@@ -9,14 +9,15 @@ drop table menus;
 drop table menuitems;
 
 /* Create Tables */
-create table restaurants(RID int NOT NULL,
+create table restaurants(RID int NOT NULL AUTO_INCREMENT,
                          RNAME varchar(20),
                          ADDRESS varchar(100),
                          PHONE varchar(12),
                          primary key (RID));
                          
-create table menus(MID int NOT NULL,
+create table menus(MID int NOT NULL AUTO_INCREMENT,
                    MNAME varchar(50),
+                   MDETAILS varchar(200),
                    RID int NOT NULL,
                    primary key (MID),
                    CONSTRAINT fk_rid FOREIGN KEY (RID)
@@ -24,8 +25,9 @@ create table menus(MID int NOT NULL,
                    ON DELETE CASCADE
                    ON UPDATE CASCADE);
                    
-create table menuitems(MIID int NOT NULL,
+create table menuitems(MIID int NOT NULL AUTO_INCREMENT,
                        MITEMNAME varchar(50),
+                       MITEMDETAILS varchar(200),
                        MID int NOT NULL,
                        RID int NOT NULL,
                        primary key (MIID),
@@ -41,6 +43,5 @@ create table menuitems(MIID int NOT NULL,
                        
 commit;
 
-select * from menuitems;
-
-insert into restaurants values(200, 'Paradise', 'E.Flamingo Road', '702-934-3333'); 
+select * from restaurants;
+select * from menus;

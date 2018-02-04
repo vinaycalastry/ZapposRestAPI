@@ -1,6 +1,7 @@
 var dbConnection = require("../models/restaurantModel.js");
 var _redis = require("redis");
 var redis = _redis.createClient(process.env.REDISPORT, process.env.REDISIP);
+var redis_key_exp = process.env.REDISKEYEXP;
 
 
 /* ROUTES */
@@ -46,6 +47,7 @@ module.exports.getRestaurant = function(req, res){
 								throw error;
 							}
 							else{
+								redis.expire(key, redis_key_exp);
 								result_db = {
 									"RID": results[0].RID.toString(),
 									"RNAME": results[0].RNAME,
@@ -163,6 +165,7 @@ module.exports.getMenu = function(req, res){
 								throw error;
 							}
 							else{
+								redis.expire(key, redis_key_exp);
 								result_db = {
 									"MID": results[0].MID.toString(),
 									"MNAME": results[0].MNAME,
@@ -279,6 +282,7 @@ module.exports.getMenuItem = function(req, res){
 								throw error;
 							}
 							else{
+								redis.expire(key, redis_key_exp);
 								result_db = {
 									"MIID": results[0].MIID.toString(),
 									"MITEMNAME": results[0].MITEMNAME,

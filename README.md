@@ -1,6 +1,6 @@
 # ZapposRestAPI
 
-### Technologies used:
+### Technologies used
 | Application   | Version       |       
 | ------------- |:-------------:|
 | Node.js       | 8.9.1         |
@@ -26,6 +26,8 @@ __PS: Used Redis on Ubuntu whereas the rest were installed on Windows as Redis d
 **BaseURL**: http://localhost:5000
 
 *Body type for POST*: application/json
+
+_Please check included **Endpoints_and_testcases.xlsx** file for more info_
 
 | Endpoint        | HTTP Verb | Purpose                                                                 | Example                            | JSON Example                                                                                          |
 |-----------------|-----------|-------------------------------------------------------------------------|------------------------------------|-------------------------------------------------------------------------------------------------------|

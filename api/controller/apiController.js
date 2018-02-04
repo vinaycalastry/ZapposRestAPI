@@ -273,7 +273,7 @@ module.exports.getMenuItem = function(req, res){
 
 					if(err) throw err;
 					// Use the connection
-					connection.query('SELECT MIID, MITEMNAME, MITEMDETAILS, MID, RID FROM `menuitems` where `MIID`=?', [miid], function (error, results, fields) {
+					connection.query('SELECT MIID, MITEMNAME, MITEMDETAILS, MITEMPRICE, MID, RID FROM `menuitems` where `MIID`=?', [miid], function (error, results, fields) {
 					
 					connection.release();
 		
@@ -286,7 +286,7 @@ module.exports.getMenuItem = function(req, res){
 						res.status(400).json({Error: "No rows found."});
 					}
 					else{
-						redis.hmset(key, "MIID", results[0].MIID, "MITEMNAME", results[0].MITEMNAME, "MITEMDETAILS",  results[0].MITEMDETAILS, "MID", results[0].MID, "RID",  results[0].RID, function (err, reply) {
+						redis.hmset(key, "MIID", results[0].MIID, "MITEMNAME", results[0].MITEMNAME, "MITEMDETAILS",  results[0].MITEMDETAILS, "MITEMPRICE",  results[0].MITEMPRICE, "MID", results[0].MID, "RID",  results[0].RID, function (err, reply) {
 							if(err) {
 								res.status(500).json({"Error": error});
 								throw error;
@@ -297,6 +297,7 @@ module.exports.getMenuItem = function(req, res){
 									"MIID": results[0].MIID.toString(),
 									"MITEMNAME": results[0].MITEMNAME,
 									"MITEMDETAILS": results[0].MITEMDETAILS,
+									"MITEMPRICE":  results[0].MITEMPRICE.toString(),
 									"MID": results[0].MID.toString(),
 									"RID": results[0].RID.toString()
 								};
@@ -324,6 +325,7 @@ module.exports.addMenuItem = function(req, res){
 			var queryParams = {
 				MITEMNAME: req.body.MITEMNAME,
 				MITEMDETAILS: req.body.MITEMDETAILS,
+				MITEMPRICE: req.body.MITEMPRICE,
 				MID: req.body.MID,
 				RID: req.body.RID
 			};

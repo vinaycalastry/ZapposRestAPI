@@ -28,6 +28,7 @@ create table menus(MID int NOT NULL AUTO_INCREMENT,
 create table menuitems(MIID int NOT NULL AUTO_INCREMENT,
                        MITEMNAME varchar(50),
                        MITEMDETAILS varchar(200),
+                       MITEMPRICE DECIMAL(5,2) NOT NULL,
                        MID int NOT NULL,
                        RID int NOT NULL,
                        primary key (MIID),
@@ -45,3 +46,9 @@ commit;
 
 select * from restaurants;
 select * from menus;
+select * from menuitems;
+
+delete from restaurants;
+
+insert into menus(MNAME, MDETAILS, RID) values('Breakfast', 'All dishes relating to breakfast before 11:00AM are stored here', 1);
+insert into menuitems(MITEMNAME, MITEMDETAILS, MID, RID) values('TEST', 'test2',2,2 );

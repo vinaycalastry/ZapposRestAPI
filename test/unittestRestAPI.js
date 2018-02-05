@@ -27,7 +27,7 @@ describe('/GET BaseRoute', function() {
 });
 
 //Try to fetch the retaurant details from empty table in DB
-describe('/GET Restaurant', function() {
+describe('/GET /Restaurant/:ID', function() {
     it('It should test if webservice sends No Rows found', function(done){
         var test_rid = 1;
         dbConnection.query("DELETE FROM `restaurants`");
@@ -44,7 +44,7 @@ describe('/GET Restaurant', function() {
 });
 
 //Add a restaurant to DB
-describe('/POST Restaurant', function() {
+describe('/POST /Restaurant', function() {
     it('It should test if Restaurant details are added to DB', function(done){
         //Delete all rows from restaurants table before testing
         dbConnection.query("DELETE FROM `restaurants`");
@@ -63,7 +63,7 @@ describe('/POST Restaurant', function() {
 });
 
 //Fetch the restaurant from DB
-describe('/GET Restaurant from DB', function() {
+describe('/GET /Restaurant/:ID', function() {
     it('It should test if Restaurant details are retrieved from DB', function(done){
         chai.request(app)
                 .get('/restaurant/'+rid)
@@ -83,7 +83,7 @@ describe('/GET Restaurant from DB', function() {
 
 
 //Try to fetch the menu details from empty menus table in DB
-describe('/GET Menu', function() {
+describe('/GET /Menu/:ID', function() {
     it('It should test if webservice sends No Rows found for Menus in DB', function(done){
         var test_mid = 1;
         dbConnection.query("DELETE FROM `menus`");
@@ -100,7 +100,7 @@ describe('/GET Menu', function() {
 });
 
 //Add a Menu to DB
-describe('/POST Menu', function() {
+describe('/POST /Menu', function() {
     it('It should test if Menu is properly added to DB', function(done){
         //Delete all rows from restaurants table before testing
         dbConnection.query("DELETE FROM `menus`");
@@ -119,7 +119,7 @@ describe('/POST Menu', function() {
 });
 
 //Fetch the Menu from DB
-describe('/GET Menu', function() {
+describe('/GET /Menu/:ID', function() {
     it('It should get the previously added menu from menus table in DB', function(done){
         chai.request(app)
                 .get('/menu/'+mid)
@@ -139,7 +139,7 @@ describe('/GET Menu', function() {
 
 
 //Try to fetch the menu item details from empty menu items table in DB
-describe('/GET menuItem', function() {
+describe('/GET /menuItem/:ID', function() {
     it('It should test if webservice sends No Rows found for MenuItems GET request', function(done){
         var test_miid = 1;
         dbConnection.query("DELETE FROM `menuitems`");
@@ -156,7 +156,7 @@ describe('/GET menuItem', function() {
 });
 
 //Add a new MenuItem for a menu to menuitems table in DB
-describe('/POST menuItem', function() {
+describe('/POST /menuItem', function() {
     it('It should test if Menu is properly added to DB', function(done){
         //Delete all rows from restaurants table before testing
         dbConnection.query("DELETE FROM `menuitems`");
@@ -175,7 +175,7 @@ describe('/POST menuItem', function() {
 });
 
 //Fetch the MenuItem from DB
-describe('/GET menuItem', function() {
+describe('/GET /menuItem/:ID', function() {
     it('It should get the previously added menuitem from menuitems table in DB', function(done){
         chai.request(app)
                 .get('/menuItem/'+miid)
@@ -197,7 +197,7 @@ describe('/GET menuItem', function() {
 
 
 //Delete the MenuItem details from DB
-describe('/DELETE menuItem', function() {
+describe('/DELETE /menuItem/:ID', function() {
     it('It should delete the previously added menuitem from menuitems table in DB', function(done){        
         chai.request(app)
                 .delete('/menuItem/'+miid)
@@ -212,7 +212,7 @@ describe('/DELETE menuItem', function() {
 
 
 //Delete the recently added menu details from DB
-describe('/DELETE Menu', function() {
+describe('/DELETE /menu/:ID', function() {
     it('It should delete the previously added menu from menus table in DB', function(done){        
         chai.request(app)
                 .delete('/menu/'+mid)
@@ -227,7 +227,7 @@ describe('/DELETE Menu', function() {
 
 
 //Delete the restaurant details from DB
-describe('/DELETE Restaurant', function() {
+describe('/DELETE /restaurant/:ID', function() {
     it('It should test if Restaurant details are deleted from Restaurant Table in DB', function(done){        
         chai.request(app)
                 .delete('/restaurant/'+rid)

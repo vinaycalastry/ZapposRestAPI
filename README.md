@@ -45,6 +45,8 @@ _Please check included **Endpoints_and_testcases.xlsx** file for more info_
 
 ### Unit Test Results
 
+PS D:\WorkSpaces\Projects\Zappos\RestaurantAPI> npm test
+
 > restaurantapi@1.0.0 test D:\WorkSpaces\Projects\Zappos\RestaurantAPI
 > mocha --timeout 10000
 
@@ -54,41 +56,41 @@ Running on: 5000 port
   /GET BaseRoute
     √ It should test if webservice is up
 
-  /GET Restaurant
+  /GET /Restaurant/:ID
     √ It should test if webservice sends No Rows found
 
-  /POST Restaurant
+  /POST /Restaurant
     √ It should test if Restaurant details are added to DB
 
-  /GET Restaurant from DB
+  /GET /Restaurant/:ID
     √ It should test if Restaurant details are retrieved from DB
 
-  /GET Menu
+  /GET /Menu/:ID
     √ It should test if webservice sends No Rows found for Menus in DB
 
-  /POST Menu
+  /POST /Menu
     √ It should test if Menu is properly added to DB
 
-  /GET Menu
+  /GET /Menu/:ID
     √ It should get the previously added menu from menus table in DB
 
-  /GET menuItem
+  /GET /menuItem/:ID
     √ It should test if webservice sends No Rows found for MenuItems GET request
 
-  /POST menuItem
+  /POST /menuItem
     √ It should test if Menu is properly added to DB
 
-  /GET menuItem
+  /GET /menuItem/:ID
     √ It should get the previously added menuitem from menuitems table in DB
 
-  /DELETE menuItem
+  /DELETE /menuItem/:ID
     √ It should delete the previously added menuitem from menuitems table in DB
 
-  /DELETE Menu
+  /DELETE /menu/:ID
     √ It should delete the previously added menu from menus table in DB
 
-  /DELETE Restaurant
+  /DELETE /restaurant/:ID
     √ It should test if Restaurant details are deleted from Restaurant Table in DB
 
 
-  13 passing (244ms)
+  13 passing (223ms)

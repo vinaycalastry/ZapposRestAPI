@@ -99,7 +99,7 @@ Running on: 5000 port
   ### Use of Redis as a cache
 
   Fetching from DB takes:
-  ![Alt text](https://drive.google.com/open?id=1v1Bb5ZePl2_gqDxNseAEdv67s1PkS_fu "From MySQL DB")
+  ![alt text](images/fromDB.PNG "From MySQL DB")
 
   Fetching from a locally hosted cache takes:
-  ![Alt text](https://drive.google.com/open?id=1zQwV0ZRDOoAGvgxq9pfQ7YAbjCaFb8qr "From Redis Caches")
+ ![alt text](images/fromRedis.PNG "From Redis")

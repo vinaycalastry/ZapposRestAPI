@@ -63,7 +63,7 @@ describe('/POST Restaurant', function() {
 });
 
 //Fetch the restaurant from DB
-describe('/GET Restaurant', function() {
+describe('/GET Restaurant from DB', function() {
     it('It should test if Restaurant details are retrieved from DB', function(done){
         chai.request(app)
                 .get('/restaurant/'+rid)
@@ -77,7 +77,9 @@ describe('/GET Restaurant', function() {
                     done();
         });
     });
+    
 });
+
 
 
 //Try to fetch the menu details from empty menus table in DB
@@ -192,9 +194,11 @@ describe('/GET menuItem', function() {
 });
 
 
+
+
 //Delete the MenuItem details from DB
 describe('/DELETE menuItem', function() {
-    it('It should get the previously added menuitem from menuitems table in DB', function(done){        
+    it('It should delete the previously added menuitem from menuitems table in DB', function(done){        
         chai.request(app)
                 .delete('/menuItem/'+miid)
                 .end(function(err,res) {

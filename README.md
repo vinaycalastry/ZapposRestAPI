@@ -41,3 +41,54 @@ _Please check included **Endpoints_and_testcases.xlsx** file for more info_
 | /menuItem/:ID   | GET       | Get menu items in a menu of a restaurant using its MenuItem ID          | http://localhost:5000/menuItem/2   |                                                                                                       |
 | /menuItem/:ID   | DELETE    | Delete menu items in a menu of a restaurant using its MenuItem ID       | http://localhost:5000/menuItem/2   |                                                                                                       |
 | /menuItem       | POST      | Add a new menuitem to a menu of a restaurant and generate a MenuItem ID | http://localhost:5000/menuItem     | {"MITEMNAME":"PrimeRib","MITEMDETAILS":"Burger","MITEMPRICE":4.95,"MID":"1","RID":"1"}                |
+
+
+### Unit Test Results
+
+> restaurantapi@1.0.0 test D:\WorkSpaces\Projects\Zappos\RestaurantAPI
+> mocha --timeout 10000
+
+
+
+Running on: 5000 port
+  /GET BaseRoute
+    √ It should test if webservice is up
+
+  /GET Restaurant
+    √ It should test if webservice sends No Rows found
+
+  /POST Restaurant
+    √ It should test if Restaurant details are added to DB
+
+  /GET Restaurant from DB
+    √ It should test if Restaurant details are retrieved from DB
+
+  /GET Menu
+    √ It should test if webservice sends No Rows found for Menus in DB
+
+  /POST Menu
+    √ It should test if Menu is properly added to DB
+
+  /GET Menu
+    √ It should get the previously added menu from menus table in DB
+
+  /GET menuItem
+    √ It should test if webservice sends No Rows found for MenuItems GET request
+
+  /POST menuItem
+    √ It should test if Menu is properly added to DB
+
+  /GET menuItem
+    √ It should get the previously added menuitem from menuitems table in DB
+
+  /DELETE menuItem
+    √ It should delete the previously added menuitem from menuitems table in DB
+
+  /DELETE Menu
+    √ It should delete the previously added menu from menus table in DB
+
+  /DELETE Restaurant
+    √ It should test if Restaurant details are deleted from Restaurant Table in DB
+
+
+  13 passing (244ms)

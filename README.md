@@ -8,7 +8,6 @@
 | MySQL         | 5.7           |
 | Redis         | 3.0.6        |
 
-__PS: Used Redis on Ubuntu whereas the rest were installed on Windows as Redis does not officially support Windows__
 
 ### Steps to run
 
@@ -16,7 +15,7 @@ __PS: Used Redis on Ubuntu whereas the rest were installed on Windows as Redis d
 2. Run **git clone https://github.com/vinaycalastry/ZapposRestAPI.git** to get the code from GitHub.
 3. Run the MySQLDB.sql script file provided for the tables to be created.
 4. Edit the **.env** file provided with correct values for MySQL DB and Redis
-5. Navigate to the restaurantapi folder(where package.json is located) and run **npm install** in console. This step is to install dependencies required for the RestAPI to work.
+5. Navigate to the ZapposRestAPI folder(where package.json is located) and run **npm install**. This will install all the require dependencies for Node.js
 6. Run **npm test** to run the unit-test cases.
 7. Run **npm start** inorder to start the webserver.
 
@@ -29,19 +28,18 @@ __PS: Used Redis on Ubuntu whereas the rest were installed on Windows as Redis d
 
 _Please check included **Endpoints_and_testcases.xlsx** file for more info_
 
-| Endpoint        | HTTP Verb | Purpose                                                                 | Example                            | JSON Example                                                                                          |
-|-----------------|-----------|-------------------------------------------------------------------------|------------------------------------|-------------------------------------------------------------------------------------------------------|
-| /               | GET       | Base URL to check if webservice is up                                   | http://localhost:5000              |                                                                                                       |
-| /restaurant/:ID | GET       | Get a Restaurant details using its Restaurant ID                        | http://localhost:5000/restaurant/2 |                                                                                                       |
-| /restaurant/:ID | DELETE    | Delete a Restaurant and its details using its Restaurant  ID            | http://localhost:5000/restaurant/2 |                                                                                                       |
-| /restaurant     | POST      | Add a new restaurant to the Database and generate a Restaurant ID       | http://localhost:5000/restaurant   | {"RNAME":"Jack in the Box","ADDRESS":"San Fransisco","PHONE":"500-004-3003"}                          |
-| /menu/:ID       | GET       | Get menus of a restaurant using its Menu ID                             | http://localhost:5000/menu/2       |                                                                                                       |
-| /menu/:ID       | DELETE    | Delete Menus of a restaurant using its Menu ID                          | http://localhost:5000/menu/2       |                                                                                                       |
-| /menu           | POST      | Add a new menu to a restaurant and generate a Menu ID                   | http://localhost:5000/menu         | {"MNAME":"Dinner","MDETAILS":"All dishes relating to dinner before 9:00PM are stored here","RID":"1"} |
-| /menuItem/:ID   | GET       | Get menu items in a menu of a restaurant using its MenuItem ID          | http://localhost:5000/menuItem/2   |                                                                                                       |
-| /menuItem/:ID   | DELETE    | Delete menu items in a menu of a restaurant using its MenuItem ID       | http://localhost:5000/menuItem/2   |                                                                                                       |
-| /menuItem       | POST      | Add a new menuitem to a menu of a restaurant and generate a MenuItem ID | http://localhost:5000/menuItem     | {"MITEMNAME":"PrimeRib","MITEMDETAILS":"Burger","MITEMPRICE":4.95,"MID":"1","RID":"1"}                |
-
+| Endpoint        | HTTP Verb | Purpose                                                                 | Example                             | JSON Request                                                                                           | JSON Response                                                                                                           |
+|-----------------|-----------|-------------------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| /               | GET       | Base URL to check if webservice is up                                   | http://localhost:5000               |                                                                                                        | {"Message":"Welcome to the Restaurant API V1.0."}                                                                       |
+| /restaurant     | POST      | Add a new restaurant to the Database and generate a Restaurant ID       | http://localhost:5000/restaurant    | {"RNAME":"Jack in the Box","ADDRESS":"San Fransisco","PHONE":"500-004-3003"}                           | {"Message":"Restaurant with RID: 22 added to Table DB.","RID":22}                                                       |
+| /restaurant/:ID | GET       | Get a Restaurant details using its Restaurant ID                        | http://localhost:5000/restaurant/22 |                                                                                                        | {"RID":"22","RNAME":"Jack in the Box","ADDRESS":"San Fransisco","PHONE":"500-004-3003"}                                 |
+| /menu           | POST      | Add a new menu to a restaurant and generate a Menu ID                   | http://localhost:5000/menu          | {"MNAME":"Dinner","MDETAILS":"All dishes relating to dinner before 9:00PM are stored here","RID":"22"} | {"Message":"Menus with ID: 26 of Restaurant with RID: 22 added to Menus Table in DB.","MID":26,"RID":"22"}              |
+| /menu/:ID       | GET       | Get menus of a restaurant using its Menu ID                             | http://localhost:5000/menu/26       |                                                                                                        | {"MID":"26","MNAME":"Dinner","MDETAILS":"All dishes relating to dinner before 9:00PM are stored here","RID":"22"}       |
+| /menuItem       | POST      | Add a new menuitem to a menu of a restaurant and generate a MenuItem ID | http://localhost:5000/menuItem      | {"MITEMNAME":"PrimeRib","MITEMDETAILS":"Burger","MITEMPRICE":4.95,"MID":"1","RID":"1"}                 | {"Message":"MenuItem with ID: 6 of Restaurant with RID: 22 added to Menus Table in DB.","MIID":6,"MID":"26","RID":"22"} |
+| /menuItem/:ID   | GET       | Get menu items in a menu of a restaurant using its MenuItem ID          | http://localhost:5000/menuItem/6    |                                                                                                        | {"MIID":"6","MITEMNAME":"PrimeRib","MITEMDETAILS":"Burger","MITEMPRICE":"4.95","MID":"26","RID":"22"}                   |
+| /menuItem/:ID   | DELETE    | Delete menu items in a menu of a restaurant using its MenuItem ID       | http://localhost:5000/menuItem/6    |                                                                                                        | {"Message":"MenuItem with ID:6 deleted from DB"}                                                                        |
+| /menu/:ID       | DELETE    | Delete Menus of a restaurant using its Menu ID                          | http://localhost:5000/menu/26       |                                                                                                        | {"Message":"Menu with ID:26 deleted from DB"}                                                                           |
+| /restaurant/:ID | DELETE    | Delete a Restaurant and its details using its Restaurant  ID            | http://localhost:5000/restaurant/22 |                                                                                                        | {"Message":"Restaurant with RID:22 deleted from DB","RID":"22"}                                                         |
 
 ### Unit Test Results
 
@@ -98,8 +96,13 @@ Running on: 5000 port
 
   ### Use of Redis as a cache
 
-  Fetching from DB takes:
+  Fetching from DB takes: *34ms*
   ![alt text](images/fromDB.PNG "From MySQL DB")
 
-  Fetching from a locally hosted cache takes:
+  Fetching from a locally hosted cache takes: *9ms*
  ![alt text](images/fromRedis.PNG "From Redis")
+
+
+ ### Work in Progress
+ 1. Fetch all restaurants instead of with ID.
+ 2. Fetch all menuitems and insert multiple menus and menuitems at a time.

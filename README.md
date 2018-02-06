@@ -1,5 +1,8 @@
 # ZapposRestAPI
 
+## GitHub Repo Link
+https://github.com/vinaycalastry/ZapposRestAPI
+
 ### Technologies used
 | Application   | Version       |       
 | ------------- |:-------------:|
